@@ -5,15 +5,15 @@ const Name = () => {
 
   const table = names.map((name) => <li key="1">{name}</li>);
 
-  const [title, setTitle] = useState("Hello Bartek!");
+  const [toggle, setToggle] = useState(true);
 
   return (
     <>
-      <div>{title}</div>
-      <div>{table}</div>
-      <button type="button" onClick={() => setTitle("Witaj Bartek")}>
-        Turn on Polish
+      <h3>Names Table:</h3>
+      <button type="button" onClick={() => setToggle(!toggle)}>
+        Toggle Names!
       </button>
+      <div>{toggle ? <ul>{table}</ul> : "Table is empty!"}</div>
     </>
   );
 };
