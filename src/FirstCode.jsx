@@ -9,6 +9,7 @@ const FirstCode = () => {
     <>
       <input
         type="number"
+        min={0}
         value={step}
         onChange={(e) => setStep(Number(e.target.value))}
       />
