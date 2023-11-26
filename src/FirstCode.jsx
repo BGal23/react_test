@@ -8,19 +8,27 @@ const FirstCode = () => {
   return (
     <>
       <div className={first.main}>
+        <div>
+          <button
+            type="button"
+            onClick={() => setCounter((prev) => prev - step)}
+          >
+            -{step}
+          </button>
+          <span>{counter}</span>
+          <button
+            type="button"
+            onClick={() => setCounter((prev) => prev + step)}
+          >
+            +{step}
+          </button>
+        </div>
         <input
           type="number"
           min={0}
           value={step}
           onChange={(e) => setStep(Number(e.target.value))}
         />
-        <button type="button" onClick={() => setCounter((prev) => prev - step)}>
-          -{step}
-        </button>
-        <span>{counter}</span>
-        <button type="button" onClick={() => setCounter((prev) => prev + step)}>
-          +{step}
-        </button>
       </div>
     </>
   );
