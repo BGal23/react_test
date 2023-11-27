@@ -8,6 +8,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <FirstCode />
     <Name />
-    <Form name="Bartek" />
+    <Form />
   </React.StrictMode>
 );
