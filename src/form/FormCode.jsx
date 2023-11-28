@@ -6,22 +6,36 @@ const data = {
   login: "",
   email: "",
   password: "",
+  gender: null,
+  Gender: {
+    man: "man",
+    woman: "woman",
+  },
+  age: "",
+  agree: false,
 };
 
 class Form extends Component {
   state = { ...data };
 
   handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+    console.log(event.target);
+
+    const { name, value, type, checked } = event.target;
+
+    console.log({ [name]: type === "checkbox" ? checked : value });
+
+    this.setState({ [name]: type === "checkbox" ? checked : value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { login, email, password } = this.state;
+    const { login, email, password, agree, gender, age } = this.state;
 
-    console.log(`Login: ${login}, Email: ${email}, Password: ${password}`);
+    console.log(
+      `Login: ${login}, Email: ${email}, Password: ${password},, Gender: ${gender}, Age: ${age} Accept: ${agree}`
+    );
 
     this.props.onSubmit({ ...this.state });
     this.reset();
@@ -32,7 +46,7 @@ class Form extends Component {
   };
 
   render() {
-    const { login, email, password } = this.state;
+    const { login, email, password, agree, gender, age } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className={form.main}>
         <label>
@@ -65,7 +79,58 @@ class Form extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <button type="submit">Sing In {login}</button>
+        <label>
+          <div>Choose your gender:</div>
+          <br />
+          <span>Man </span>
+          <input
+            type="radio"
+            id="1g"
+            name="gender"
+            checked={gender === data.Gender.man}
+            value={data.Gender.man}
+            onChange={this.handleChange}
+          />
+          <span>Woman </span>
+          <input
+            type="radio"
+            id="2g"
+            name="gender"
+            checked={gender === data.Gender.woman}
+            value={data.Gender.woman}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label>
+          <div>Choose your age:</div>
+          <br />
+          <select name="age" value={age} onChange={this.handleChange}>
+            <option id="1a" value="" disabled>
+              ...
+            </option>
+            <option id="2a" value="0-17 years">
+              0-17 years
+            </option>
+            <option id="3g" value="18-64 years">
+              18-64 years
+            </option>
+            <option id="4g" value="65+ years">
+              65+ years
+            </option>
+          </select>
+        </label>
+        <label>
+          <span>Accept regimen </span>
+          <input
+            type="checkbox"
+            name="agree"
+            checked={agree}
+            onChange={this.handleChange}
+          />
+        </label>
+        <button className={form.btn} type="submit" disabled={!agree}>
+          Sing In {login}
+        </button>
       </form>
     );
   }
