@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { PropTypes } from "prop-types";
+import css from "./query.module.css";
 
 export class SourceBar extends Component {
   handleKeyUp = (event) => {
@@ -9,9 +10,9 @@ export class SourceBar extends Component {
   };
   render() {
     return (
-      <div>
+      <divc className={css.query}>
         <input placeholder="Enter query here" onKeyUp={this.handleKeyUp} />
-      </div>
+      </divc>
     );
   }
 }
