@@ -1,0 +1,20 @@
+.left {
+  position: relative;
+  border: 2px solid red;
+  width: 30%;
+  margin: 10px;
+  padding: 5px;
+}
+
+.right {
+  position: relative;
+  border: 2px solid dodgerblue;
+  margin: 10px 0;
+  padding: 5px;
+  flex-grow: 1;
+}
+
+.dashbord {
+  display: flex;
+  height: 100vh;
+}

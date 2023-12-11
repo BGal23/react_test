@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 import App_3 from "./lesson3/App_3.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
+  //<React.StrictMode>
   <App_3 />
   //</React.StrictMode>
 );
