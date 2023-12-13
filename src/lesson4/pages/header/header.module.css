@@ -1,0 +1,22 @@
+.header {
+  background-color: rgba(31, 143, 255, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  gap: 30px;
+  padding: 0 30px;
+  border-bottom: 2px solid darkmagenta;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  color: darkmagenta;
+  font-weight: bold;
+  font-size: 20px;
+}
