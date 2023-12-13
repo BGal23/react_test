@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import css from "./header.module.css";
 
@@ -15,17 +15,19 @@ const StyledLink = styled(NavLink)`
 
 const Header = () => {
   return (
-    <header className={css.header}>
-      <div className={css.logo}>🇺🇳 Countries Page 🇺🇳</div>
-      <div className={css.nav}>
-        {" "}
-        <StyledLink to="/" end>
-          Home
-        </StyledLink>
-        <StyledLink to="/about">About</StyledLink>
-        <StyledLink to="/countries">Countries</StyledLink>
-      </div>
-    </header>
+    <>
+      <header className={css.header}>
+        <div className={css.logo}>🇺🇳 Countries Page 🇺🇳</div>
+        <div className={css.nav}>
+          <StyledLink to="/" end>
+            Home
+          </StyledLink>
+          <StyledLink to="/about">About</StyledLink>
+          <StyledLink to="/countries">Countries</StyledLink>
+        </div>
+      </header>
+      <Outlet />
+    </>
   );
 };
 
