@@ -9,7 +9,7 @@ const StyledLink = styled(NavLink)`
     background-color: darkmagenta;
     padding: 5px;
     color: white;
-    border-radius: 5px;
+    border-radius: 6px;
   }
 `;
 
