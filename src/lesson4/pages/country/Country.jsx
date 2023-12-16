@@ -1,27 +1,20 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getDataCountry } from "../importAPI";
+//import { useEffect } from "react";
+import { useParams, Link, useLocation } from "react-router-dom";
+//import { getDataCountry } from "../importAPI";
 
 const Country = () => {
   const { country } = useParams();
 
-  //   const countryData = async () => {
-  //     try {
-  //       const getData = await getDataCountry();
-  //       //setCountries([...getCountries]);
+  const location = useLocation();
+  const from = location.state?.from ?? "/countries";
 
-  //       console.log(getData);
-  //     } catch (error) {
-  //       console.log("error", error);
-  //     }
-  //   };
-
-  useEffect(() => {
-    //countryData();
-    getDataCountry();
-  }, []);
-
-  return <div>{country}</div>;
+  return (
+    <main>
+      <br />
+      <Link to={from}>Go back!</Link>
+      <h3>{country}</h3>
+    </main>
+  );
 };
 
 export default Country;

@@ -7,3 +7,12 @@ body {
 a {
   text-decoration: none;
 }
+
+main {
+  padding: 0 30px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}

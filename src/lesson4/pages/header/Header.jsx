@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import css from "./header.module.css";
+import { Suspense } from "react";
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -26,7 +27,9 @@ const Header = () => {
           <StyledLink to="/countries">Countries</StyledLink>
         </div>
       </header>
-      <Outlet />
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

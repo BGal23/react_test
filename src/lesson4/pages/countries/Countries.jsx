@@ -1,34 +1,45 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
-import { getAllCountries } from "../importAPI";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { countriesList } from "../importAPI";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
-  const countriesList = async () => {
-    try {
-      const getCountries = await getAllCountries();
-      setCountries([...getCountries]);
-    } catch (error) {
-      console.log("error", error);
-    }
+  //const [queryFilter, setQueryFilter] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
+  const location = useLocation();
+
+  const handleOnChange = (event) => {
+    const filter = event.target.value;
+    setSearchParams({ query: filter });
   };
 
   useEffect(() => {
-    countriesList();
-  }, []);
+    // simulation
+    setTimeout(() => {
+      countriesList(query).then((filteredCountries) =>
+        setCountries(filteredCountries)
+      );
+    }, "300");
+  }, [query]);
 
   const list = countries.map((data) => (
     <li key={uuidv4()}>
       {data.unicodeFlag}
-      <Link to={`${data.name}`}> {data.name}</Link>
+      <Link to={`${data.name}`} state={{ from: location }}>
+        {" "}
+        {data.name}
+      </Link>
     </li>
   ));
 
   return (
-    <div>
+    <main>
+      <h3>Find your country</h3>
+      <input value={query} onChange={handleOnChange} />
       <ul>{list}</ul>
-    </div>
+    </main>
   );
 };
 
