@@ -1,5 +1,5 @@
 import Button from "./Button.jsx";
-import { addTask } from "../redux/actions.js";
+import { addTask } from "../redux/tasksSlice.js";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -9,8 +9,13 @@ const TaskForm = () => {
   const newTask = (event) => {
     event.preventDefault();
     const from = event.target;
-    dispatch(addTask(from.elements.text.value));
-    from.reset();
+    const newTaskName = from.elements.text.value;
+    if (newTaskName) {
+      dispatch(addTask(newTaskName));
+      from.reset();
+    } else {
+      alert("Sorry, your task must have a name");
+    }
   };
 
   return (

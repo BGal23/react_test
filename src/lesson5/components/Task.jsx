@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { removeTask, setTaskCompleted } from "../redux/actions";
+import { removeTask, setTaskCompleted } from "../redux/tasksSlice";
 import PropTypes from "prop-types";
 
 const Task = ({ task }) => {
@@ -10,7 +10,7 @@ const Task = ({ task }) => {
   return (
     <li>
       <input type="checkbox" checked={task.completed} onChange={handleToggle} />
-      <span>{task.text}</span>
+      <span> {task.text} </span>
       <button onClick={remove}>X</button>
     </li>
   );

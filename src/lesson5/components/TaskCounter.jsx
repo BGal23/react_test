@@ -5,7 +5,6 @@ const TaskCounter = () => {
   const tasks = useSelector(getTasks);
 
   let number = 0;
-  console.log(tasks);
   tasks.map((task) => {
     if (task.completed === true) {
       number = number + 1;
