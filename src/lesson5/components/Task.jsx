@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux";
-import { removeTask } from "../redux/actions";
+import { removeTask, setTaskCompleted } from "../redux/actions";
 import PropTypes from "prop-types";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
-  const remove = () => {
-    dispatch(removeTask(task.id));
-  };
+  const remove = () => dispatch(removeTask(task.id));
+  const handleToggle = () => dispatch(setTaskCompleted(task.id));
+
   return (
     <li>
-      <input type="checkbox" checked={task.completed} onChange={() => {}} />
+      <input type="checkbox" checked={task.completed} onChange={handleToggle} />
       <span>{task.text}</span>
       <button onClick={remove}>X</button>
     </li>
@@ -19,9 +19,5 @@ const Task = ({ task }) => {
 export default Task;
 
 Task.propTypes = {
-  task: PropTypes.exact({
-    id: PropTypes.number,
-    text: PropTypes.string,
-    completed: PropTypes.bool,
-  }),
+  task: PropTypes.object,
 };
