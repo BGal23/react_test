@@ -1,7 +1,6 @@
 import Button from "./Button.jsx";
 import { addTask } from "../redux/tasksSlice.js";
 import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
 
 const TaskForm = () => {
   const dispatch = useDispatch();
@@ -27,7 +26,3 @@ const TaskForm = () => {
 };
 
 export default TaskForm;
-
-TaskForm.propTypes = {
-  task: PropTypes.string,
-};

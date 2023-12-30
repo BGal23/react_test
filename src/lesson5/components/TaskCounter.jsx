@@ -1,21 +1,13 @@
 import { useSelector } from "react-redux";
-import { getTasks } from "../redux/selectors";
+import { selectTaskCount } from "../redux/selectors";
 
 const TaskCounter = () => {
-  const tasks = useSelector(getTasks);
-
-  let number = 0;
-  tasks.map((task) => {
-    if (task.completed === true) {
-      number = number + 1;
-    }
-  });
-
+  const { active, completed } = useSelector(selectTaskCount);
   return (
     <div>
-      <h4>Task: {tasks.length}</h4>
-      <p>Active: {tasks.length - number}</p>
-      <p>Completed: {number}</p>
+      <h4>Task: {active + completed}</h4>
+      <p>Active: {active}</p>
+      <p>Completed: {completed}</p>
     </div>
   );
 };
